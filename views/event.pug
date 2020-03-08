@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= event.event
+  h4 Posted by #{organiser}
+  h5 Status: #{event.status}
+  h5 Info: #{event.info}
+  h6 Date: #{event.date}
+  h6 Venue: #{event.venue}
+  h6 Time: #{event.time}
+  h6 TAGS:
+  each tag in event.tags
+    h8  #{tag}
+  each attender in event.attenders
+      if user.id ==attender
+        h5(href="#" style={'color': 'red'}) You are Attending this Event!
+  a.btn.btn-default(href='/events/attend/'+event._id) Attend
+  h6 Attenders: #{event.attenders.length}
+  hr
+  if user
+    if user.id ==event.organiser
+      a.btn.btn-default(href='/events/edit/'+event._id) Edit 
+      a.btn.btn-danger.delete-event(href='/events/delete/'+event._id) Delete

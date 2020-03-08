@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Timeline
+  each event in timeline
+        ul
+            li <b>Date:</b> #{event.date.toDateString()}
+            li <b>Message Type:</b> #{event.messageType}
+            li <b>Message:</b> #{event.message}
+            li <b>Points:</b> #{event.pointsAwarded}
+        hr
+
+

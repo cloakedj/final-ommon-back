@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  head
+  h1 #{event}
+  h2 #{comp}
+  h2 #{collab}
+
+  body
+  main#main
+  h1.ui.center.aligned.header EVENTFEED
+  .ui.container
+    table.ui.celled.table.center.aligned
+        thead
+          tr
+            th Events
+        tbody
+          each event in events
+              tr
+                td
+                  a(href="/events/"+event._id)= event.event
+        thead
+          tr
+            th Competitions
+          each comp in comps
+              tr
+                td
+                  a(href="/comps/"+comp._id)= comp.comp
+        thead
+          tr
+            th Collaborations
+          each collab in collabs
+              tr
+                td
+                  a(href="/collabs/"+collab._id)= collab.collab

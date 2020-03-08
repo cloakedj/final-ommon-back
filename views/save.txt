@@ -1,0 +1,4 @@
+//ul.list-group
+    each event, i in events
+      li.list-group-item
+        a(href="/events/"+event._id)= event.event

@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Add Collaboration +
+  form(method='POST', action='/collabs/add')
+    #form-group
+      label Collaboration name:
+      input.form-control(name='collab', type='text')
+    #form-group
+      label Information:
+      textarea.form-control(name='info')
+    #form-group
+      label Status:
+      input.form-control(name='status', type='radio', value="Active")
+      | Active
+      input.form-control(name='status', type='radio', value="Inactive") 
+      | Inactive
+      input.form-control(name='status', type='radio', value="Petition") 
+      | Petition
+    #form-group
+        label Tags:
+        textarea.form-control(name='tags', type='text')
+    br
+    input.btn.btn-primary(type='submit',value='Submit')

@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 Edit Competition -
+  form(method='POST', action='/comps/edit/'+comp._id)
+    #form-group
+      label Competition Name:
+      input.form-control(name='comp', type='text', value=comp.comp)
+    #form-group
+      label Organiser:
+      label #{user.name}
+    #form-group
+      label Information:
+      textarea.form-control(name='info')= comp.info
+    #form-group
+      label Date:
+      input.form-control(name='date', type='text', value=comp.date)
+    #form-group
+        label Time:
+        input.form-control(name='time', type='text', value=comp.time)
+    #form-group
+      label Venue:
+      input.form-control(name='venue', type='text', value=comp.venue)
+    #form-group
+      label status:
+      input.form-control(name='status', type='radio', value="Active")
+      | Active
+      input.form-control(name='status', type='radio', value="Inactive") 
+      | Inactive
+      input.form-control(name='status', type='radio', value="Petition") 
+      | Petition
+    #form-group
+        label Tags: #{comp.tags}
+        textarea.form-control(name='tags', type='text')
+    br
+    input.btn.btn-primary(type='submit',value='Submit')

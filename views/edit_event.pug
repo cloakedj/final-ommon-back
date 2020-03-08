@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 Edit Event -
+  form(method='POST', action='/events/edit/'+event._id)
+    #form-group
+      label Event Name:
+      input.form-control(name='event', type='text', value=event.event)
+    #form-group
+      label Organiser:
+      label #{user.name}
+    #form-group
+      label Information:
+      textarea.form-control(name='info')= event.info
+    #form-group
+      label Date:
+      input.form-control(name='date', type='text', value=event.date)
+    #form-group
+        label Time:
+        input.form-control(name='time', type='text', value=event.time)
+    #form-group
+      label Venue:
+      input.form-control(name='venue', type='text', value=event.venue)
+    #form-group
+      label status:
+      input.form-control(name='status', type='radio', value="Active")
+      | Active
+      input.form-control(name='status', type='radio', value="Inactive") 
+      | Inactive
+      input.form-control(name='status', type='radio', value="Petition") 
+      | Petition
+    #form-group
+        label Tags:
+        textarea.form-control(name='tags', type='text', value=event.tags)
+    br
+    input.btn.btn-primary(type='submit',value='Submit')

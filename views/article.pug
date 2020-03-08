@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= event.title
+  h5 Written by #{author}
+  p= event.body
+  hr
+  if user
+    if user.id ==event.author
+      a.btn.btn-default(href='/events/edit/'+event._id) Edit 
+      a.btn.btn-danger.delete-event(href='#',data-id=event._id) Delete
+  

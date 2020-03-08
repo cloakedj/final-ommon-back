@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1 Add Event +
+  form(method='POST', action='/events/add')
+    #form-group
+      label Event name:
+      input.form-control(name='event', type='text')
+    #form-group
+      label Information:
+      textarea.form-control(name='info')
+    #form-group
+      label Date:
+      input.form-control(name='date', type='date', placeholder="YYYY-MM-DD")
+    #form-group
+        label Time:
+        input.form-control(name='time', type='text')
+    #form-group
+      label Venue:
+      input.form-control(name='venue', type='text')
+    #form-group
+      label Status:
+      input.form-control(name='status', type='radio', value="Active")
+      | Active
+      input.form-control(name='status', type='radio', value="Inactive") 
+      | Inactive
+      input.form-control(name='status', type='radio', value="Petition") 
+      | Petition
+    #form-group
+        label Tags:
+        textarea.form-control(name='tags', type='text')
+    br
+    input.btn.btn-primary(type='submit',value='Submit')

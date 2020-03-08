@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= collab.collab
+  h4 Posted by #{organiser}
+  h5 Status: #{collab.status}
+  h5 Info: #{collab.info}
+  h6 Date posted: #{collab.datenow}
+  h6 TAGS:
+  each tag in collab.tags
+    h8  #{tag}
+
+  hr
+  if user
+    if user.id ==collab.organiser
+      a.btn.btn-default(href='/collabs/edit/'+collab._id) Edit 
+      a.btn.btn-danger.delete-collab(href='#',data-id=collab._id) Delete
+  

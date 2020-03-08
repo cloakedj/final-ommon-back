@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 Edit Collaboration -
+  form(method='POST', action='/collabs/edit/'+collab._id)
+    #form-group
+      label Collaboration Name:
+      input.form-control(name='collab', type='text', value=collab.collab)
+    #form-group
+      label Organiser:
+      label #{user.name}
+    #form-group
+      label Information:
+      textarea.form-control(name='info')= collab.info
+    #form-group
+      label Date:
+      input.form-control(name='date', type='text', value=collab.date)
+    #form-group
+        label Time:
+        input.form-control(name='time', type='text', value=collab.time)
+    #form-group
+      label Venue:
+      input.form-control(name='venue', type='text', value=collab.venue)
+    #form-group
+      label status:
+      input.form-control(name='status', type='radio', value="Active")
+      | Active
+      input.form-control(name='status', type='radio', value="Inactive") 
+      | Inactive
+      input.form-control(name='status', type='radio', value="Petition") 
+      | Petition
+    #form-group
+        label Tags:
+        textarea.form-control(name='tags', type='text', value=collab.tags)
+    br
+    input.btn.btn-primary(type='submit',value='Submit')

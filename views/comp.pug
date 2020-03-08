@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= comp.comp
+  h4 Posted by #{organiser}
+  h5 Status: #{comp.status}
+  h5 Info: #{comp.info}
+  h6 Date: #{comp.date}
+  h6 Venue: #{comp.venue}
+  h6 Time: #{comp.time}
+  h6 TAGS:
+  each tag in comp.tags
+    h8  #{tag}
+  a.btn.btn-default(href='/comps/attend/'+comp._id) Participate
+  h6 Participants: #{comp.participants.length}
+  hr
+  if user
+    if user.id ==comp.organiser
+      a.btn.btn-default(href='/comps/edit/'+comp._id) Edit 
+      a.btn.btn-danger.delete-comp(href='#',data-id=comp._id) Delete
+    each participant in comp.participants
+      if user.id == participant
+        h5(href="#" style={'color': 'red'}) You are Participating in this Competition!
+  
