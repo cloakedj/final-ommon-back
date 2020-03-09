@@ -48,7 +48,8 @@ let compSchema = mongoose.Schema({
   imgurl:{
     type: String,
     required: false
-  }
+  },
+  sponsored:Boolean
 });
 
 let Comp = module.exports = mongoose.model('Comp', compSchema);

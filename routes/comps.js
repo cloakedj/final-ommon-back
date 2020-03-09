@@ -64,6 +64,7 @@ router.post('/add',ensureAuthenticated, upload.single('cover'),ensureAuthenticat
     comp.time = req.body.time;
     //comp.participants = req.body.participants.split('\n');
     comp.tags = req.body.tags.split(',');
+    comp.sponsored = req.body.sponsored;  
     comp.cover = "http://localhost:3000/images/"+req.file.filename;
 
     comp.save(function(err,doc){
@@ -143,7 +144,19 @@ router.delete('/:id',ensureAuthenticated, function(req, res){
     }
   });
 });
+//get Sponsored Competition
+router.get('/sponsored',ensureAuthenticated,(req,res)=>{
+  var sponsoredComps = [];
+  Comp.find({sponsored : true},(err,comp)=>{
+    if(err) throw err;
+    comp.forEach(elem =>{
+      sponsoredComps.push(elem.toObject());
+    });
+    let randComp = sponsoredComps[Math.floor(Math.random() * sponsoredComps.length)];
+    res.status(200).send({sponsoredcomp : randComp});
+  });
 
+});
 // Get Single comp
 router.get('/:id',ensureAuthenticated, function(req, res){
   Comp.findById(req.params.id, function(err, comp){
